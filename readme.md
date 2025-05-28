@@ -26,3 +26,31 @@ Funcionalidades Bônus
 O usuário pode inserir um número variável de dígitos binários. [X]
 
 | Feito (✓) & Por fazer (X) |
+
+
+## ✨ Funcionalidades
+
+- ✅ Converte números binários (ex: 10101010) para decimais
+- ✅ Validação simples para garantir apenas 0s e 1s
+- ✅ Layout responsivo com visual moderno e escuro
+- ✅ Feito inteiramente com tecnologias web puras
+
+## 🚀 Como usar
+
+1. Digite um número binário (até 8 dígitos) no campo de entrada
+2. Clique no botão **"CALCULAR"**
+3. O número decimal será exibido abaixo
+
+## 🛠️ Tecnologias
+
+- HTML5
+- CSS3
+- JavaScript
+
+## 🧠 Aprendizado
+
+Esse projeto foi feito como um desafio para praticar e aplicar:
+- Manipulação do DOM
+- Estilização moderna com CSS
+- Lógica de conversão numérica
+- Controle de versão com Git & GitHub
