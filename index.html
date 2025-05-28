@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bin2Dec</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap");
+    </style>
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #1e1f26;
+  color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  background-color: #2a2c34;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #61dafb;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 0.9rem;
+  color: #b0b3b8;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #1f2127;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s ease;
+  margin-bottom: 20px;
+}
+
+input[type="text"]:focus {
+  border: 1px solid #61dafb;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #61dafb;
+  color: #1e1f26;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  
+}
+
+button:hover {
+  background-color: #4fb4db;
+  transform: translateY(-2px);
+}
+
+#resultado {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #e2e2e2;
+}
+
+</style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bin2Dec</h1>
+      <p>"Binário para Decimal"</p>
+      <input
+        type="text"
+        placeholder="Digite 8 números aqui!"
+        oninput="myFunction(this.value)"
+      />
+      <button
+        id="button"
+        onclick="exibirAlerta(); inverterArray(); resultadoBin2Dec()"
+      >
+        CALCULAR
+      </button>
+      <p>
+        O resultado binário para decimal é:
+        <strong id="resultado" style="color: rgb(0, 201, 0)"></strong>
+      </p>
+    </div>
+
+    <script>
+      let arrayBin = [];
+      let arrayBinValidos = ["0", "1"];
+      let dif_0_ou_1 = false;
+
+      function myFunction(valor) {
+        console.log(valor);
+        arrayBin = valor.split("");
+        console.log(arrayBin);
+      }
+
+      function exibirAlerta() {
+        if (arrayBin.length > 8) {
+          alert("Quantidade de números maior que o exigido!");
+        } else if (arrayBin.length < 8) {
+          alert("Quantidade de números menor que o exigido!");
+        } else {
+          verificarInput();
+        }
+      }
+      function verificarInput() {
+        dif_0_ou_1 = false;
+        for (let posicao = 0; posicao < arrayBin.length; posicao++) {
+          let valor1 = arrayBin[posicao];
+          if (!arrayBinValidos.includes(valor1)) {
+            dif_0_ou_1 = true;
+            break;
+          }
+        }
+        if (dif_0_ou_1 === true) {
+          alert("Digite apenas em binário (0 e 1)");
+        }
+      }
+      function inverterArray() {
+        if (dif_0_ou_1 === false) {
+          arrayBin.reverse();
+        }
+      }
+      function resultadoBin2Dec() {
+        if (dif_0_ou_1 === false) {
+          let resultado = 0;
+
+          for (let i = 0; i < arrayBin.length; i++) {
+            resultado += Number(arrayBin[i]) * 2 ** (arrayBin.length - 1 - i);
+          }
+
+          document.getElementById("resultado").textContent = resultado;
+        }
+      }
+    </script>
+  </body>
+</html>
